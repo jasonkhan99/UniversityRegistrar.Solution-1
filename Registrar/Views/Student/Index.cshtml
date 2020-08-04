@@ -8,7 +8,9 @@
   <h3>No studnets have enrolled yet!</h3>
 } 
 
-@foreach (Student student in Model)
-{
-    <li>@student.StudentName</li>
-}
+<ul>
+  @foreach (Student student in Model)
+  {
+      <li>@student.StudentName</li>
+  }
+</ul>

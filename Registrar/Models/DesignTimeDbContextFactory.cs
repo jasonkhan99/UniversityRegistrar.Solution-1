@@ -17,7 +17,7 @@ namespace Registrar.Models
       var builder = new DbContextOptionsBuilder<RegistrarContext>();
       var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-      builder.UseMySql(connectionsString);
+      builder.UseMySql(connectionString);
       
       return new RegistrarContext(builder.Options);
     }
