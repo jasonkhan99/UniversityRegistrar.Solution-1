@@ -3,7 +3,7 @@
 <h1>@Model.StudentName's Details</h1>
 
 <ul>
-  <li>Enrollement Date: @Model.EnrollmentDate</li>
+  <li>Enrollment Date: @Model.EnrollmentDate</li>
   <li>Current Courses: 
     @if(@Model.Courses.Count == 0)
     {
@@ -19,3 +19,4 @@
 </ul>
 
 <p>@Html.ActionLink("Delete", "Delete", new { id = Model.StudentId })</p>
+<p>@Html.ActionLink("Edit", "Edit", new { id = Model.StudentId })</p>

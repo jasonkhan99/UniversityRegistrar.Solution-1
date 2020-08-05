@@ -1,0 +1,19 @@
+<h2>Edit student profile</h2>
+
+@model Registrar.Models.Student
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.StudentId)
+  
+  @Html.Label("Student Name ")
+  @Html.EditorFor(model => model.StudentName)<br><br>
+<hr />
+  @Html.Label("Enrollment Date ")
+  @Html.EditorFor(model => model.EnrollmentDate, new { type = "date"})<br><br>
+<hr />
+  @Html.Label("Available Courses ")
+  @Html.DropDownList("CourseId")<br><br>
+<hr />
+  <input type="submit" value="Save student changes" class="btn btn-default" />
+}
