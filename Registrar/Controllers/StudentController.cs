@@ -37,11 +37,26 @@ namespace Registrar.Controllers
     }
     public ActionResult Details(int id)
     {
-      var ThisStudent = _db.Students
+      var thisStudent = _db.Students
         .Include(student => student.Courses)
         .ThenInclude(join => join.Course)
         .FirstOrDefault(student => student.StudentId == id);
-      return View(ThisStudent);
+      return View(thisStudent);
+    }
+
+    public ActionResult Delete(int id)
+    {
+      var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
+      return View(thisStudent);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
+      _db.Students.Remove(thisStudent);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }

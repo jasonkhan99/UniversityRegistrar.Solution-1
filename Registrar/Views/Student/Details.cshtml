@@ -1,5 +1,21 @@
+@model Registrar.Models.Student
+
 <h1>@Model.StudentName's Details</h1>
 
 <ul>
-  <li></li>
+  <li>Enrollement Date: @Model.EnrollmentDate</li>
+  <li>Current Courses: 
+    @if(@Model.Courses.Count == 0)
+    {
+      <p>This student has not signed up for any classes</p>
+    }
+    <ul>
+    @foreach (var join in Model.Courses)
+    {
+      <li>@join.Course.CourseName</li>
+    }
+    </ul>
+  </li>
 </ul>
+
+<p>@Html.ActionLink("Delete", "Delete", new { id = Model.StudentId })</p>

@@ -1,0 +1,11 @@
+@model Registrar.Models.Student
+
+<h4>Are you sure you would like to delete @Model.StudentName from the database?</h4>
+<br>
+<br>
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+
+@Html.ActionLink("Back to Student's List", "Index")
