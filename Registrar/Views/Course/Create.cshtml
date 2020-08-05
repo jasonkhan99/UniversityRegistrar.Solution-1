@@ -1,0 +1,14 @@
+<h2>Add a new course</h2>
+
+@model Registrar.Models.Course
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.CourseName)
+  @Html.TextBoxFor(model => model.CourseName)
+  <hr />
+  @Html.LabelFor(model => model.CourseNum)
+  @Html.TextBoxFor(model => model.CourseNum)
+  <hr />
+  <input type="submit" value="Add Course" class="btn btn-default"/>
+}

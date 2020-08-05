@@ -27,11 +27,11 @@ namespace Registrar.Controllers
     [HttpPost]
     public ActionResult Create(Student student, int CourseId)
     {
+      _db.Students.Add(student);
       if (CourseId != 0)
       {
         _db.CourseStudent.Add(new CourseStudent() { CourseId = CourseId, StudentId = student.StudentId });
       }
-      _db.Students.Add(student);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
@@ -57,9 +57,9 @@ namespace Registrar.Controllers
       {
         _db.CourseStudent.Add(new CourseStudent() {  CourseId = CourseId, StudentId = student.StudentId});
       }
+      _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
     public ActionResult Edit(int id) 
     {
       var thisStudent = _db.Students.FirstOrDefault(students => students.StudentId == id);
@@ -78,6 +78,7 @@ namespace Registrar.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    
     public ActionResult Delete(int id)
     {
       var thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
