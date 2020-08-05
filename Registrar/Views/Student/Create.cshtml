@@ -4,14 +4,14 @@
 
 @using (Html.BeginForm())
 {
-  @Html.Label("Student Name")
-  @Html.TextBoxFor(model => model.StudentName)
-
-  @Html.Label("Enrollment Date")
-  @Html.TextBoxFor(model => model.EnrollmentDate, new { type = "date"})
-
-  @Html.Label("Available Courses")
-  @Html.CheckBoxFor("CourseId")
-
+  @Html.Label("Student Name ")
+  @Html.TextBoxFor(model => model.StudentName)<br><br>
+<hr />
+  @Html.Label("Enrollment Date ")
+  @Html.TextBoxFor(model => model.EnrollmentDate, new { type = "date"})<br><br>
+<hr />
+  @Html.Label("Available Courses ")
+  @Html.DropDownList("CourseId")<br><br>
+<hr />
   <input type="submit" value="Add new student" class="btn btn-default" />
 }

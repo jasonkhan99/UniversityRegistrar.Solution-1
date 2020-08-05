@@ -23,5 +23,25 @@ namespace Registrar.Controllers
       ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "CourseName");
       return View();
     }
+
+    [HttpPost]
+    public ActionResult Create(Student student, int CourseId)
+    {
+      if (CourseId != 0)
+      {
+        _db.CourseStudent.Add(new CourseStudent() { CourseId = CourseId, StudentId = student.StudentId });
+      }
+      _db.Students.Add(student);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult Details(int id)
+    {
+      var ThisStudent = _db.Students
+        .Include(student => student.Courses)
+        .ThenInclude(join => join.Course)
+        .FirstOrDefault(student => student.StudentId == id);
+      return View(ThisStudent);
+    }
   }
 }
