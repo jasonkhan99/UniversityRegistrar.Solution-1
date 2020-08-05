@@ -43,6 +43,23 @@ namespace Registrar.Controllers
         .FirstOrDefault(student => student.StudentId == id);
       return View(thisStudent);
     }
+    public ActionResult AddCourse(int id)
+    {
+      var thisStudent = _db.Students.FirstOrDefault(students => students.StudentId == id);
+      ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "CourseName");
+      return View(thisStudent);
+    }
+
+    [HttpPost]
+    public ActionResult AddCourse(Student student, int CourseId)
+    {
+      if (CourseId != 0)
+      {
+        _db.CourseStudent.Add(new CourseStudent() {  CourseId = CourseId, StudentId = student.StudentId});
+      }
+      return RedirectToAction("Index");
+    }
+
     public ActionResult Edit(int id) 
     {
       var thisStudent = _db.Students.FirstOrDefault(students => students.StudentId == id);
@@ -55,7 +72,7 @@ namespace Registrar.Controllers
     {
       if (CourseId != 0)
       {
-        _db.CourseStudent.Add(new CourseStudent() {CourseId = CourseId, StudentId = student.StudentId});
+        _db.CourseStudent.Add(new CourseStudent() { CourseId = CourseId, StudentId = student.StudentId });
       }
       _db.Entry(student).State = EntityState.Modified; 
       _db.SaveChanges();
