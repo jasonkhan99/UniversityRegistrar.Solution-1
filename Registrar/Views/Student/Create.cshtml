@@ -1,0 +1,17 @@
+<h2>Add an enrolled student</h2>
+
+@model Registrar.Models.Student
+
+@using (Html.BeginForm())
+{
+  @Html.Label("Student Name")
+  @Html.TextBoxFor(model => model.StudentName)
+
+  @Html.Label("Enrollment Date")
+  @Html.TextBoxFor(model => model.EnrollmentDate, new { type = "date"})
+
+  @Html.Label("Available Courses")
+  @Html.CheckBoxFor("CourseId")
+
+  <input type="submit" value="Add new student" class="btn btn-default" />
+}

@@ -18,5 +18,10 @@ namespace Registrar.Controllers
     {
       return View(_db.Students.ToList());
     }
+    public ActionResult Create()
+    {
+      ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "CourseName");
+      return View();
+    }
   }
 }

@@ -11,5 +11,3 @@ namespace Registrar.Models
     public RegistrarContext(DbContextOptions options) : base(options) { }
   }
 }
-
-
