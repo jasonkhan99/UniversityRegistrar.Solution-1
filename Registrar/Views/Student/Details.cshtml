@@ -15,6 +15,12 @@
       <li>@join.Course.CourseName</li>
     }
     </ul>
+    <ul>
+    @foreach (var join in Model.Departments)
+    {
+      <li>@join.Department.DepartmentName</li>
+    }
+    </ul>
   </li>
 </ul>
 <p>@Html.ActionLink("Add Course", "AddCourse", new { id = Model.StudentId })</p>

@@ -1,7 +1,8 @@
 @model Registrar.Models.Course
 
-<h1>@Model.CourseName</h1>
-<h1>@Model.CourseNum</h1>
+<h3>Course Name: @Model.CourseName</h3>
+<h3>Course Number: @Model.CourseNum</h3>
+<h3>Department: @Model.Department.DepartmentName</h3>
 
 
 <p>@Html.ActionLink("Back to courses", "Index")</p>

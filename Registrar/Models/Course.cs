@@ -11,6 +11,8 @@ namespace Registrar.Models
     public int CourseId { get; set; }
     public string CourseName { get; set; }
     public int CourseNum { get; set; }
+    public int DepartmentId { get; set; }
+    public Department Department { get; set; }
     public virtual ICollection<CourseStudent> Students { get; set; }
   }
 }

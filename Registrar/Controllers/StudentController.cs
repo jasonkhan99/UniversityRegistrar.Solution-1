@@ -25,12 +25,16 @@ namespace Registrar.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Student student, int CourseId)
+    public ActionResult Create(Student student, int CourseId, int DepartmentId)
     {
       _db.Students.Add(student);
       if (CourseId != 0)
       {
         _db.CourseStudent.Add(new CourseStudent() { CourseId = CourseId, StudentId = student.StudentId });
+      }
+      if (DepartmentId != 0)
+      {
+        _db.DepartmentStudent.Add(new DepartmentStudent() { DepartmentId = DepartmentId, StudentId = student.StudentId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -38,8 +42,10 @@ namespace Registrar.Controllers
     public ActionResult Details(int id)
     {
       var thisStudent = _db.Students
+        .Include(student => student.Departments)
+          .ThenInclude(join => join.Department)
         .Include(student => student.Courses)
-        .ThenInclude(join => join.Course)
+          .ThenInclude(join => join.Course)
         .FirstOrDefault(student => student.StudentId == id);
       return View(thisStudent);
     }

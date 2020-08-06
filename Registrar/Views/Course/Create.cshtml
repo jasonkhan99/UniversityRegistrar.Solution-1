@@ -10,5 +10,8 @@
   @Html.LabelFor(model => model.CourseNum)
   @Html.TextBoxFor(model => model.CourseNum)
   <hr />
+  @Html.Label("Department ")
+  @Html.DropDownList("DepartmentId")<br><br>
+  <hr />
   <input type="submit" value="Add Course" class="btn btn-default"/>
 }
