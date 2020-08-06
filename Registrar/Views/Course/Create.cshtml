@@ -1,3 +1,7 @@
+@{
+  Layout = "_Layout";
+}
+
 <h2>Add a new course</h2>
 
 @model Registrar.Models.Course
@@ -10,5 +14,10 @@
   @Html.LabelFor(model => model.CourseNum)
   @Html.TextBoxFor(model => model.CourseNum)
   <hr />
+  @Html.Label("Department ")
+  @Html.DropDownList("DepartmentId")<br><br>
+  <hr />
   <input type="submit" value="Add Course" class="btn btn-default"/>
 }
+
+<p>@Html.ActionLink("Return Home", "Index", "Home")</p>

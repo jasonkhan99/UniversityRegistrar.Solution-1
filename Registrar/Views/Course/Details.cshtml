@@ -1,7 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
 @model Registrar.Models.Course
 
-<h1>@Model.CourseName</h1>
-<h1>@Model.CourseNum</h1>
+<h3>Course Name: @Model.CourseName</h3>
+<h3>Course Number: @Model.CourseNum</h3>
+<h3>Department: @Html.ActionLink(Model.Department.DepartmentName, "Details", "Department", new { id = Model.Department.DepartmentId })</h3>
+
+<h3>Students Enrolled:</h3>
+<ul>
+  @if(Model.Students.Count == 0)
+  {
+    <li>No Students are currently enrolled</li>
+  } else
+  {
+    @foreach (var join in Model.Students)
+    {
+      <li>@Html.ActionLink(join.Student.StudentName, "Details", "Student", new { id = join.Student.StudentId })</li>
+    }
+  }
+</ul>
 
 
 <p>@Html.ActionLink("Back to courses", "Index")</p>
+<p>@Html.ActionLink("Edit Course", "Edit", new { id = Model.CourseId})</p>
+<p>@Html.ActionLink("Delete Course", "Delete",  new { id = Model.CourseId})</p>
+<p>@Html.ActionLink("Return Home", "Index", "Home")</p>

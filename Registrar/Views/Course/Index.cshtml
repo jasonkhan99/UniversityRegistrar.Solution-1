@@ -1,3 +1,7 @@
+@{
+  Layout = "_Layout";
+}
+
 @using System.Collections.Generic;
 @using Registrar.Models;
 
@@ -15,5 +19,5 @@
   }   
 </ul>
 
-@Html.ActionLink("Add a course", "Create", "Course")
-@Html.ActionLink("Back Home", "Index", "Home")
+<p>@Html.ActionLink("Add a course", "Create", "Course")</p>
+<p>@Html.ActionLink("Return Home", "Index", "Home")</p>

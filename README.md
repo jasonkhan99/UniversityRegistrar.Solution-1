@@ -2,7 +2,7 @@
 
 #### _MVC & Entity Practice for Many-to-Many Relationships_
 
-#### By _**KEVIN DAVIS, JOSEPH PEARCE, KYLE HUBBARD**_
+#### By _**KEVIN DAVIS, JOSEPH PEARCE, KYLE HUBBARD, JASON KHAN**_
 
 ## Description
 
@@ -19,7 +19,9 @@ _A mock application for a University registrar to keep track of students and cou
 | Program will allow a Course to contain many students. | input: | output:  | [ ] |
 | Program will allow a Student to take as many courses as they want. | input: | output:  | [ ] | 
 
+## Database Table Relationships
 
+![](./img/UNI_DB_DIAGRAM.png)
 
 ## Setup/Installation Requirements
 

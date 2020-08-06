@@ -1,4 +1,11 @@
-<h1>University Student Registrar</h1>
+@{
+  Layout = "_Layout";
+}
 
-@Html.ActionLink("View current students", "Index", "Student") <br>
-@Html.ActionLink("View current courses", "Index", "Course")
+<h1>Hubbard University Student Registrar</h1>
+<hr />
+<button class="btn btn-warning btn-md" onclick="location.href='@Url.Action("Index", "Student")'">View current students</button>
+<br>
+<button class="btn btn-warning btn-md" onclick="location.href='@Url.Action("Index", "Course")'">View current courses</button>
+<br>
+<button class="btn btn-warning btn-md" onclick="location.href='@Url.Action("Index", "Department")'">View current departments</button>

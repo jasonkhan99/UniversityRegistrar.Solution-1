@@ -23,6 +23,7 @@ namespace Registrar.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
       return View();
     }
 
@@ -37,10 +38,38 @@ namespace Registrar.Controllers
     public ActionResult Details(int id)
     {
       var thisCourse = _db.Courses
+        .Include(course => course.Department)
         .Include(course => course.Students)
-        .ThenInclude(join => join.Course)
+        .ThenInclude(join => join.Student)
         .FirstOrDefault(course => course.CourseId == id);
       return View(thisCourse);
+    }
+    public ActionResult Delete(int id)
+    {
+      var thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
+      return View(thisCourse);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
+      _db.Courses.Remove(thisCourse);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult Edit(int id)
+    {
+      var thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
+      return View(thisCourse);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Course course)
+    {
+      _db.Entry(course).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }

@@ -1,3 +1,7 @@
+@{
+  Layout = "_Layout";
+}
+
 <h2>Edit student profile</h2>
 
 @model Registrar.Models.Student
@@ -17,3 +21,5 @@
 <hr />
   <input type="submit" value="Save student changes" class="btn btn-default" />
 }
+
+<p>@Html.ActionLink("Return Home", "Index", "Home")</p>

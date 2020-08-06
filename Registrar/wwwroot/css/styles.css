@@ -1,0 +1,36 @@
+body {
+  background-color:maroon;
+  color: goldenrod;
+}
+
+h1 {
+  font-stretch: ultra-expanded;
+  text-shadow: indigo 2px 2px;
+}
+
+li {
+  font-weight: bold;
+}
+
+a {
+  color: goldenrod;
+}
+
+.container {
+  background-image: url(https://images.pexels.com/photos/7096/people-woman-coffee-meeting.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1% 2% 1% 2%;
+  margin-top: 2%;
+  border-radius: 15px;
+  border: solid 5px indigo;
+}
+
+button {
+  margin-bottom: 15px;
+}
+
+.spacing {
+  margin-right: 15px;
+}

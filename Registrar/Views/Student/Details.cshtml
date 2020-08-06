@@ -1,3 +1,7 @@
+@{
+  Layout = "_Layout";
+}
+
 @model Registrar.Models.Student
 
 <h1>@Model.StudentName's Details</h1>
@@ -12,7 +16,15 @@
     <ul>
     @foreach (var join in Model.Courses)
     {
-      <li>@join.Course.CourseName</li>
+      <li>@Html.ActionLink(join.Course.CourseName, "Details", "Course", new { id = join.Course.CourseId })</li>
+    }
+    </ul>
+  </li>
+  <li>Affiliated Departments: 
+      <ul>
+    @foreach (var join in Model.Departments)
+    {
+      <li>@Html.ActionLink(join.Department.DepartmentName, "Details", "Department", new { id = join.Department.DepartmentId })</li>
     }
     </ul>
   </li>
@@ -20,3 +32,4 @@
 <p>@Html.ActionLink("Add Course", "AddCourse", new { id = Model.StudentId })</p>
 <p>@Html.ActionLink("Delete", "Delete", new { id = Model.StudentId })</p>
 <p>@Html.ActionLink("Edit", "Edit", new { id = Model.StudentId })</p>
+<p>@Html.ActionLink("Return Home", "Index", "Home")</p>

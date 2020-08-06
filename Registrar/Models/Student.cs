@@ -12,5 +12,6 @@ namespace Registrar.Models
     public string StudentName { get; set; }
     public System.DateTime EnrollmentDate { get; set; }
     public ICollection<CourseStudent> Courses { get; set; }
+    public ICollection<DepartmentStudent> Departments { get; set; }
   }
 }
