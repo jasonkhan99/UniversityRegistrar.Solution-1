@@ -1,8 +1,12 @@
+@{
+  Layout = "_Layout";
+}
+
 @model Registrar.Models.Course
 
 <h3>Course Name: @Model.CourseName</h3>
 <h3>Course Number: @Model.CourseNum</h3>
-<h3>Department: @Model.Department.DepartmentName</h3>
+<h3>Department: @Html.ActionLink(Model.Department.DepartmentName, "Details", "Department", new { id = Model.Department.DepartmentId })</h3>
 
 <h3>Students Enrolled:</h3>
 <ul>
