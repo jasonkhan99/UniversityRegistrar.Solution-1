@@ -33,9 +33,14 @@ namespace Registrar.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    public ActionResult Details()
+    public ActionResult Details(int id)
     {
-      return View();
+      var thisDepartment = _db.Departments
+        .Include(department => department.Courses)
+        .Include(department => department.Students)
+          .ThenInclude(join => join.Student)
+        .FirstOrDefault(department => department.DepartmentId == id);
+      return View(thisDepartment);
     }
   }
 }

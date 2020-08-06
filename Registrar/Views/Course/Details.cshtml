@@ -1,5 +1,5 @@
-@using Registrar.Models
 @model Registrar.Models.Course
+
 <h3>Course Name: @Model.CourseName</h3>
 <h3>Course Number: @Model.CourseNum</h3>
 <h3>Department: @Model.Department.DepartmentName</h3>
@@ -13,7 +13,7 @@
   {
     @foreach (var join in Model.Students)
     {
-      <li>@join.Student.StudentName</li>
+      <li>@Html.ActionLink(join.Student.StudentName, "Details", "Student", new { id = join.Student.StudentId })</li>
     }
   }
 </ul>
