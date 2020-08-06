@@ -40,7 +40,7 @@ namespace Registrar.Controllers
       var thisCourse = _db.Courses
         .Include(course => course.Department)
         .Include(course => course.Students)
-        .ThenInclude(join => join.Course)
+        .ThenInclude(join => join.Student)
         .FirstOrDefault(course => course.CourseId == id);
       return View(thisCourse);
     }
